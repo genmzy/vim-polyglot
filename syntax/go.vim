@@ -300,7 +300,7 @@ hi def link     goFunction          Function
 if go#config#HighlightFunctionCalls()
   syn match goFunctionCall      /\w\+\ze(/ contains=goBuiltins,goDeclaration
 endif
-hi def link     goFunctionCall      Type
+hi def link     goFunctionCall      Function
 
 " Fields;
 if go#config#HighlightFields()
@@ -319,7 +319,7 @@ if go#config#HighlightFields()
         \%([\n\r\ ]\)\|\
         \%([,\:.]\)\)\@=/hs=s+1
 endif
-hi def link    goField              Identifier
+hi def link    goField              Boolean
 
 " Structs & Interfaces;
 if go#config#HighlightTypes()
