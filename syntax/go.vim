@@ -317,7 +317,7 @@ if go#config#HighlightFields()
         \%([\[\]{}<\>\)]\)\|\
         \%([\!=\^|&]\)\|\
         \%([\n\r\ ]\)\|\
-        \%([,\:.]\)\)\@=/hs=s+1
+        \%([,\:;.]\)\)\@=/hs=s+1
 endif
 hi def link    goField              Boolean
 
