@@ -319,7 +319,7 @@ if go#config#HighlightFields()
         \%([\n\r\ ]\)\|\
         \%([,\:;.]\)\)\@=/hs=s+1
 endif
-hi def link    goField              Boolean
+hi def link    goField              Special
 
 " Structs & Interfaces;
 if go#config#HighlightTypes()
