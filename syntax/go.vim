@@ -340,13 +340,13 @@ hi def link     goDeclType          Keyword
 " Variable Assignments
 if go#config#HighlightVariableAssignments()
   syn match goVarAssign /\v[_.[:alnum:]]+(,\s*[_.[:alnum:]]+)*\ze(\s*([-^+|^\/%&]|\*|\<\<|\>\>|\&\^)?\=[^=])/
-  hi def link   goVarAssign         Debug
+  hi def link   goVarAssign         Special
 endif
 
 " Variable Declarations
 if go#config#HighlightVariableDeclarations()
   syn match goVarDefs /\v\w+(,\s*\w+)*\ze(\s*:\=)/
-  hi def link   goVarDefs           Debug
+  hi def link   goVarDefs           Special
 endif
 
 " Build Constraints
