@@ -323,6 +323,7 @@ hi def link    goField              Special
 
 " Structs & Interfaces;
 if go#config#HighlightTypes()
+  syn match goTypeAny              /\<any\>/
   syn match goTypeComparable       /\<comparable\>/
   syn match goTypeConstructor      /\<\w\+{\@=/
   syn match goTypeDecl             /\<type\>/ nextgroup=goTypeName skipwhite skipnl
@@ -333,6 +334,7 @@ else
   syn keyword goDeclType           struct interface
   syn keyword goDeclaration        type
 endif
+hi def link     goTypeAny           Type
 hi def link     goTypeComparable    Type
 hi def link     goTypeConstructor   Type
 hi def link     goTypeName          Type
