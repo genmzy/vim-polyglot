@@ -280,7 +280,7 @@ if go#config#HighlightFunctions() || go#config#HighlightFunctionParameters()
   syn match goReceiverVar       /\w\+\ze\s\+\%(\w\|\*\)/ nextgroup=goPointerOperator,goReceiverType skipwhite skipnl contained
   syn match goPointerOperator   /\*/ nextgroup=goReceiverType contained skipwhite skipnl
   syn match goFunction          /\w\+/ nextgroup=goSimpleParams contained skipwhite skipnl
-  syn match goReceiverType      /\w\+\%(\[\w\+\]\)\?/ contained
+  syn match goReceiverType      /\w\+\%(\[\w\+\.\?\w*\]\)\?/ contained
   if go#config#HighlightFunctionParameters()
     syn match goSimpleParams      /(\%(\w\|\_s\|[*\.\[\],\{\}<>-]\)*)/ contained contains=goParamName,goType nextgroup=goFunctionReturn skipwhite skipnl
     syn match goFunctionReturn   /(\%(\w\|\_s\|[*\.\[\],\{\}<>-]\)*)/ contained contains=goParamName,goType skipwhite skipnl
@@ -290,7 +290,7 @@ if go#config#HighlightFunctions() || go#config#HighlightFunctionParameters()
     hi def link   goReceiverVar    goParamName
     hi def link   goParamName      Identifier
   endif
-  syn match goReceiver          /(\s*\w\+\%(\s\+\*\?\s*\w\+\%(\[\w\+\]\)\?\)\?\s*)\ze\s*\w/ contained nextgroup=goFunction contains=goReceiverVar skipwhite skipnl
+  syn match goReceiver          /(\s*\w\+\%(\s\+\*\?\s*\w\+\%(\[\w\+\.\?\w*\]\)\?\)\?\s*)\ze\s*\w/ contained nextgroup=goFunction contains=goReceiverVar skipwhite skipnl
 else
   syn keyword goDeclaration func
 endif
