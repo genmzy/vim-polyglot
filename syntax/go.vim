@@ -325,7 +325,7 @@ hi def link    goField              Special
 if go#config#HighlightTypes()
   syn match goTypeAny              /\<any\>/
   syn match goTypeComparable       /\<comparable\>/
-  syn match goTypeConstructor      /\<\w\+{\@=/
+  syn match goTypeConstructor      /\<\w\+\%(\[\w\+\.\?\w*\]\)\?{\@=/
   syn match goTypeDecl             /\<type\>/ nextgroup=goTypeName skipwhite skipnl
   syn match goTypeName             /\w\+/ contained nextgroup=goDeclType skipwhite skipnl
   syn match goDeclType             /\<\%(interface\|struct\)\>/ skipwhite skipnl
