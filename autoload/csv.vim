@@ -780,8 +780,7 @@ fu! csv#CalculateColumnWidth(row, silent) "{{{3
     " row for the row for which to calculate the width
     let b:col_width=[]
     if has( 'vartabs' ) && b:delimiter == "\t"
-        let vts_save=&vts
-        set vts=
+        setlocal vts=
     endif
     try
         if exists("b:csv_headerline")
@@ -801,9 +800,6 @@ fu! csv#CalculateColumnWidth(row, silent) "{{{3
     " delete buffer content in variable b:csv_list,
     " this was only necessary for calculating the max width
     unlet! b:csv_list s:columnize_count s:decimal_column
-    if has( 'vartabs' ) && b:delimiter == "\t"
-        let &vts=vts_save
-    endif
 endfu
 fu! csv#Columnize(field) "{{{3
     " Internal function, not called from external,
@@ -2724,7 +2720,7 @@ fu! csv#Tabularize(bang, first, last) "{{{3
     if getline(a:first)[-1:] isnot? b:delimiter
         let b:col_width[-1] += 1
     endif
-    let marginline = s:td.scol. join(map(copy(b:col_width), 'repeat(s:td.hbar, v:val)'), s:td.cros). s:td.ecol
+    let marginline = s:td.scol. join(map(copy(b:col_width), 'repeat(s:td.hbar, v:val-1)'), s:td.cros). s:td.ecol
 
     call csv#NewDelimiter(s:td.vbar, 1, line('$'))
     "exe printf('sil %d,%ds/%s/%s/ge', a:first, (a:last+adjust_last),

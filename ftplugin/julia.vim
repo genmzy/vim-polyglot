@@ -13,7 +13,7 @@ endif
 let b:did_ftplugin = 1
 
 let s:save_cpo = &cpo
-set cpo-=C
+set cpo&vim
 
 setlocal include=^\\s*\\%(reload\\\|include\\)\\>
 setlocal suffixesadd=.jl
@@ -26,7 +26,7 @@ setlocal fo-=t fo+=croql
 let b:julia_vim_loaded = 1
 
 let b:undo_ftplugin = "setlocal include< suffixesadd< comments< commentstring<"
-      \ . " define< fo< shiftwidth< expandtab< indentexpr< indentkeys< cinoptions< completefunc<"
+      \ . " define< fo< indentexpr< indentkeys< cinoptions< completefunc<"
       \ . " | unlet! b:commentary_format"
       \ . " | unlet! b:smartcomment_force_linemode"
       \ . " | unlet! b:julia_vim_loaded"
@@ -72,7 +72,7 @@ if exists("loaded_matchit")
     elseif attr == 'juliaBlKeyword'
       return b:julia_begin_keywordsm . ':' . b:julia_end_keywords
     elseif attr == 'juliaException'
-      return b:julia_begin_keywordsm . ':\<\%(catch\|finally\)\>:' . b:julia_end_keywords
+      return b:julia_begin_keywordsm . ':\<\%(catch\|else\|finally\)\>:' . b:julia_end_keywords
     endif
     return '\<\>:\<\>'
   endfunction
@@ -89,7 +89,6 @@ if exists("loaded_matchit")
         \ . " | unlet! b:match_words b:match_skip b:match_ignorecase"
         \ . " | unlet! b:julia_begin_keywords b:julia_end_keywords"
         \ . " | delfunction JuliaGetMatchWords"
-        \ . " | call julia_blocks#remove_mappings()"
 
   if get(g:, "julia_blocks", 1)
     call julia_blocks#init_mappings()
